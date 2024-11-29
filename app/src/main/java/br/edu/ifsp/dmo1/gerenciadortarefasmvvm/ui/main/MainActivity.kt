@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
         binding.buttonAddTask.setOnClickListener{
             openDialogNewTask()
         }
+
+
     }
 
     private fun openDialogNewTask() {
