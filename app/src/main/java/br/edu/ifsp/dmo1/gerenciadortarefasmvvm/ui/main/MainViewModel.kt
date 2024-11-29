@@ -24,6 +24,24 @@ class MainViewModel: ViewModel() {
     val updateTask: LiveData<Boolean>
         get() = _updateTask
 
+    private val _tasksCompleted = MutableLiveData<List<Task>>()
+    val tasksCompleted: LiveData<List<Task>>
+        get(){
+            return _tasksCompleted
+        }
+
+    private val _tasksNotCompleted = MutableLiveData<List<Task>>()
+    val tasksNotCompleted: LiveData<List<Task>>
+        get(){
+            return _tasksNotCompleted
+        }
+
+    private val _tasksAll = MutableLiveData<List<Task>>()
+    val tasksAll: LiveData<List<Task>>
+        get(){
+            return _tasksAll
+        }
+
     init {
         load()
     }
@@ -40,6 +58,18 @@ class MainViewModel: ViewModel() {
         task.isCompleted = !task.isCompleted
         _updateTask.value = true
         load()
+    }
+
+    fun getCompletedTasks(){
+        _tasksCompleted.value = dao.getIsCompleted()
+    }
+
+    fun getNotCompletedTasks(){
+        _tasksNotCompleted.value = dao.getNotCompleted()
+    }
+
+    fun getAllTasks(){
+        _tasksAll.value = dao.getAll()
     }
 
     private fun load() {

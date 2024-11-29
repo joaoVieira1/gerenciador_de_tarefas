@@ -7,4 +7,7 @@
     <string name="task_inserted_sucess">Tarefa inserida com sucesso.</string>
     <string name="task_inserted_error">Erro ao inserir tarefa.</string>
     <string name="task_update_sucess">Tarefa atualizada com sucesso</string>
+    <string name="tasks_is_completed">Feitas</string>
+    <string name="tasks_not_completed">A fazer</string>
+    <string name="tasks_all">Todas</string>
 </resources>

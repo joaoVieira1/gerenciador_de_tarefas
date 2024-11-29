@@ -55,6 +55,18 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
                 Toast.makeText(this, getString(R.string.task_update_sucess), Toast.LENGTH_LONG).show()
             }
         })
+
+        viewModel.tasksCompleted.observe(this, Observer{
+            adapter.updateTasks(it)
+        })
+
+        viewModel.tasksNotCompleted.observe(this, Observer{
+            adapter.updateTasks(it)
+        })
+
+        viewModel.tasksAll.observe(this, Observer {
+            adapter.updateTasks(it)
+        })
     }
 
     private fun configOnClickListener(){
@@ -62,6 +74,19 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
             openDialogNewTask()
         }
 
+        binding.radiogroupUnits.setOnCheckedChangeListener { _, checkedId ->
+            if(checkedId == R.id.radio_is_completed){
+                viewModel.getCompletedTasks()
+            }
+
+            if(checkedId == R.id.radio_not_completed){
+                viewModel.getNotCompletedTasks()
+            }
+
+            if(checkedId == R.id.radio_all_tasks){
+                viewModel.getAllTasks()
+            }
+        }
 
     }
 
